@@ -1,0 +1,28 @@
+{
+	"name": "processing-data-to-db",
+	"version": "1.0.0",
+	"main": "index.js",
+	"scripts": {
+		"build": "tsup src",
+		"start": "tsx src/server.ts",
+		"dev": "tsx watch src/server.ts"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"devDependencies": {
+		"@types/node": "^22.13.0",
+		"tsx": "^4.19.2",
+		"typescript": "^5.7.3"
+	},
+	"dependencies": {
+		"@bull-board/fastify": "^6.7.4",
+		"@fastify/cors": "^10.0.2",
+		"bull": "^4.16.5",
+		"convert-csv-to-json": "^2.50.0",
+		"fastify": "^5.2.1",
+		"tsup": "^8.3.6",
+		"xlsx": "^0.18.5"
+	}
+}
