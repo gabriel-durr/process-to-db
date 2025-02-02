@@ -9,6 +9,7 @@ import { BullAdapter } from '@bull-board/api/bullAdapter'
 import { routes } from './routes/routes'
 
 const SEVER_PORT = 3001
+const SERVER_HOST = '0.0.0.0'
 
 export const app = Fastify()
 
@@ -21,19 +22,26 @@ export const queue = new Queue('Processing Medical Relationship', {
 })
 
 const serverAdapter = new FastifyAdapter()
-serverAdapter.setBasePath('/admin/queues')
 
 createBullBoard({
 	queues: [new BullAdapter(queue)],
 	serverAdapter
 })
 
-app.register(serverAdapter.registerPlugin, { prefix: '/admin/queues' })
+serverAdapter.setBasePath('/ui')
+
+app.register(
+	(fastify, opts, done) => {
+		serverAdapter.registerPlugin()(fastify, opts as any, done) // Chama corretamente o método
+		done()
+	},
+	{ prefix: '/ui' }
+)
 
 app.register(routes)
 app.register(cors, { origin: '*' })
 
-app.listen({ port: SEVER_PORT }, err => {
+app.listen({ host: SERVER_HOST, port: SEVER_PORT }, err => {
 	if (err) {
 		console.error(err.message)
 		process.exit(1)

@@ -5,7 +5,7 @@ import path from 'path'
 
 const insertUserIntoDB = async (data: any) => {
 	try {
-		await new Promise(r => setTimeout(r, 1000))
+		await new Promise(r => setTimeout(r, 4000))
 	} catch (error) {
 		console.error(error)
 	}
@@ -16,6 +16,7 @@ export const StartProcessing = async (app: FastifyInstance) => {
 
 	queue.process(async job => {
 		console.log(`🚀 Adicionando Item na Fila: ${JSON.stringify(job.data)}`)
+
 		await insertUserIntoDB(job)
 	})
 
