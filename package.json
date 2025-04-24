@@ -1,5 +1,5 @@
 {
-	"name": "processing-data-to-db",
+	"name": "process-for-db",
 	"version": "1.0.0",
 	"main": "index.js",
 	"scripts": {
