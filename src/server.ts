@@ -32,7 +32,7 @@ serverAdapter.setBasePath('/ui')
 
 app.register(
 	(fastify, opts, done) => {
-		serverAdapter.registerPlugin()(fastify, opts as any, done) // Chama corretamente o método
+		serverAdapter.registerPlugin()(fastify, opts as any, done)
 		done()
 	},
 	{ prefix: '/ui' }
