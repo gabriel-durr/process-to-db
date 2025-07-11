@@ -13,7 +13,7 @@ const SERVER_HOST = '0.0.0.0'
 
 export const app = Fastify()
 
-export const queue = new Queue('Processing Medical Relationship', {
+export const queue = new Queue('PROCESS JSON QUEUE 🎯', {
 	redis: {
 		host: 'localhost',
 		port: 6379,
