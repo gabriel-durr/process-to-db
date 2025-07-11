@@ -17,7 +17,7 @@ export const queue = new Queue('Processing Medical Relationship', {
 	redis: {
 		host: 'localhost',
 		port: 6379,
-		password: 'senha!'
+		password: '17!'
 	}
 })
 
